@@ -1,16 +1,16 @@
 <template>
   <config-provider v-show="!isLock" :locale="zhCN">
     <router-view v-slot="{ Component }">
-      <component :is="Component"/>
+      <component :is="Component" />
     </router-view>
   </config-provider>
   <transition name="slide-up">
-    <lock-screen v-if="isLock && $route.name != 'login'"/>
+    <lock-screen v-if="isLock && $route.name != 'login'" />
   </transition>
 </template>
 
 <script lang="ts">
-import {defineComponent, computed, ref, onMounted, onUnmounted} from 'vue';
+import {defineComponent, computed, onMounted, onUnmounted} from 'vue';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import {ConfigProvider} from 'ant-design-vue'
 import {LockScreen} from '@/components/lockscreen'

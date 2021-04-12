@@ -2,27 +2,27 @@
   <div class="login-box">
     <div class="login-logo">
       <svg-icon icon-class="logo" />
-<!--      <img src="~@/assets/images/logo.png" alt="">-->
+      <!--      <img src="~@/assets/images/logo.png" alt="">-->
       <h1>Antd Admin</h1>
     </div>
     <a-form layout="horizontal" :model="formInline" @submit.prevent="handleSubmit">
       <a-form-item>
         <a-input v-model:value="formInline.username" size="large" placeholder="admin">
-          <template v-slot:prefix><user-outlined type="user"/></template>
+          <template #prefix><user-outlined type="user" /></template>
         </a-input>
       </a-form-item>
       <a-form-item>
         <a-input v-model:value="formInline.password" size="large" type="password" placeholder="123456" autocomplete="new-password">
-          <template v-slot:prefix><lock-outlined type="user"/></template>
+          <template #prefix><lock-outlined type="user" /></template>
         </a-input>
       </a-form-item>
       <a-form-item>
         <a-button
-            type="primary"
-            html-type="submit"
-            size="large"
-            :loading="loading"
-            block
+          type="primary"
+          html-type="submit"
+          size="large"
+          :loading="loading"
+          block
         >
           登录
         </a-button>
@@ -45,7 +45,7 @@ import {login} from "@/api/system/user";
 import {SvgIcon} from '@/components/svg-icon'
 
 export default defineComponent({
-  name: "login",
+  name: "Login",
   components: {UserOutlined, LockOutlined, SvgIcon},
   setup() {
     const state = reactive({

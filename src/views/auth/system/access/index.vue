@@ -1,25 +1,25 @@
 <template>
-  <dynamic-table ref="tableRef" @expand="expand" :columns="columns" :get-list-func="getAdminAccess" rowKey="id"
-                 :row-selection="rowSelection">
-    <template v-slot:title>
-      <a-button v-permission="{ action: 'create', effect: 'disabled' }" @click="addItem" type="primary">
+  <dynamic-table ref="tableRef" :columns="columns" :get-list-func="getAdminAccess" rowKey="id" :row-selection="rowSelection"
+                 @expand="expand">
+    <template #title>
+      <a-button v-permission="{ action: 'create', effect: 'disabled' }" type="primary" @click="addItem">
         添加
       </a-button>
-      <a-button @click="deleteItems" v-permission="{ action: 'delete' }" :disabled="isDisabled" type="primary">
+      <a-button v-permission="{ action: 'delete' }" :disabled="isDisabled" type="primary" @click="deleteItems">
         删除
       </a-button>
     </template>
-    <template v-slot:moduleName="{record}">
-      <span :ref="el => itemRefs[record.id] = el">
+    <template #moduleName="{record}">
+      <span :ref="el => { if (el) itemRefs[record.id] = el }">
         {{ record.moduleName || record.actionName }}
       </span>
     </template>
   </dynamic-table>
 </template>
 <script lang="ts">
-import {defineComponent, reactive, toRefs, createVNode, render, nextTick, computed, ref} from 'vue'
+import {defineComponent, reactive, toRefs, createVNode, computed, ref} from 'vue'
 import {Modal} from 'ant-design-vue'
-import {QuestionCircleOutlined, LoadingOutlined} from '@ant-design/icons-vue'
+import {QuestionCircleOutlined} from '@ant-design/icons-vue'
 import {DynamicTable} from '@/components/dynamic-table'
 import {delAdminAccess, getAdminAccess} from '@/api/system/access'
 import AddModal from './add-modal.vue'
@@ -29,15 +29,15 @@ import {useCreateModal} from "@/hooks";
 
 
 export default defineComponent({
-  name: 'system-access',
+  name: 'SystemAccess',
   components: {
     DynamicTable,
   },
   setup() {
     const tableRef = ref<any>(null)
+    const itemRefs = ref({})
 
     const state = reactive({
-      itemRefs: {},
       expandedRowKeys: [] as string[],
       tableLoading: false,
       rowSelection: {
@@ -75,7 +75,7 @@ export default defineComponent({
 
     // 点击展开图标
     const expand = async (expanded, record) => {
-      const expandItemEl = state.itemRefs[record.id]
+      const expandItemEl = itemRefs.value[record.id]
       // 点击展开图标loading
       const result = await useExpandLoading({
         expanded,
@@ -92,10 +92,11 @@ export default defineComponent({
     return {
       ...toRefs(state),
       columns,
+      itemRefs,
       tableRef,
+      isDisabled,
       expand,
       getAdminAccess,
-      isDisabled,
       addItem,
       deleteItems,
     }

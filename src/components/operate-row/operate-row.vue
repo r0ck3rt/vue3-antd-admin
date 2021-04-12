@@ -3,14 +3,14 @@
     <slot name="before"></slot>
     <template v-if="!hideDel">
       <a-popconfirm
-          title="您确定要删除该节点吗?"
-          @confirm="() => $emit('delete')"
+        title="您确定要删除该节点吗?"
+        @confirm="() => $emit('delete')"
       >
-        <delete-outlined @click.stop/>
+        <delete-outlined @click.stop />
       </a-popconfirm>
     </template>
-    <form-outlined v-if="!hideEdit" @click="$emit('edit')"/>
-    <plus-outlined v-if="!hideAdd" @click="$emit('add')"/>
+    <form-outlined v-if="!hideEdit" @click="$emit('edit')" />
+    <plus-outlined v-if="!hideAdd" @click="$emit('add')" />
     <slot name="after"></slot>
   </div>
 </template>
@@ -21,7 +21,8 @@ import {DeleteOutlined, FormOutlined, PlusOutlined} from "@ant-design/icons-vue"
 import {Popconfirm} from 'ant-design-vue'
 
 export default defineComponent({
-  name: "operate-row",
+  name: "OperateRow",
+  components: {DeleteOutlined, PlusOutlined, FormOutlined, [Popconfirm.name]: Popconfirm},
   props: {
     hideAdd: {
       type: Boolean,
@@ -37,7 +38,6 @@ export default defineComponent({
     }
   },
   emits: ['delete', 'edit', 'add'],
-  components: {DeleteOutlined, PlusOutlined, FormOutlined, [Popconfirm.name]: Popconfirm},
   setup() {
     return {
 

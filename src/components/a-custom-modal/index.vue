@@ -7,7 +7,7 @@
           <div v-show="visible" class="ant-modal-mask"></div>
         </transition>
         <transition key="dialog" v-bind="dialogTransitionProps">
-          <div ref="modalWrapRef" v-if="visible" class="ant-modal-wrap" >
+          <div v-if="visible" ref="modalWrapRef" class="ant-modal-wrap">
             <div ref="dragRef" class="ant-modal">
               <div class="ant-modal-content">
                 <div ref="titleRef" class="ant-modal-header">
@@ -16,7 +16,7 @@
                     <button ref="minRef" type="button" class="min" title="最小化"></button>
                     <button ref="maxRef" type="button" class="max" title="最大化"></button>
                     <button ref="revertRef" type="button" class="revert" title="还原"></button>
-                    <button @click="closeModal" type="button" class="close" title="关闭"></button>
+                    <button type="button" class="close" title="关闭" @click="closeModal"></button>
                   </div>
                 </div>
                 <div ref="resizeLRef" class="resizeL"></div>
@@ -29,9 +29,9 @@
                 <div ref="resizeLBRef" class="resizeLB"></div>
                 <div ref="modalBody" class="ant-modal-body">
                   <slot>
-                    ① 窗口可以拖动；<br/>
-                    ② 窗口可以通过八个方向改变大小；<br/>
-                    ③ 窗口可以最小化、最大化、还原、关闭；<br/>
+                    ① 窗口可以拖动；<br />
+                    ② 窗口可以通过八个方向改变大小；<br />
+                    ③ 窗口可以最小化、最大化、还原、关闭；<br />
                     ④ 限制窗口最小宽度/高度。
                   </slot>
                 </div>
@@ -39,7 +39,7 @@
                   <slot name="footer">
                     <div>
                       <a-button @click="closeModal">取 消</a-button>
-                      <a-button @click="closeModal" type="primary" :loading="confirmLoading">确 认</a-button>
+                      <a-button type="primary" :loading="confirmLoading" @click="closeModal">确 认</a-button>
                     </div>
                   </slot>
                 </div>
@@ -55,13 +55,12 @@
 <script lang="ts">
 import {defineComponent, PropType, SetupContext,} from 'vue'
 import { Transition } from 'ant-design-vue/lib/_util/transition'
-import {Modal} from 'ant-design-vue'
 import useModal from "@/components/a-custom-modal/useModal";
 
 export default defineComponent({
-  name: "a-custom-modal",
-  emits: ['update:visible'],
+  name: "ACustomModal",
   components: {Transition},
+  emits: ['update:visible'],
   props: {
     title: {
       type: String as PropType<string>,

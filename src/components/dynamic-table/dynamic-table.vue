@@ -1,19 +1,19 @@
 <template>
   <a-table
-      :columns="columns"
-      :loading="loading"
-      :rowSelection="rowSelection"
-      :rowKey="rowKey"
-      size="middle"
-      :data-source="data"
-      :pagination="pageOption"
-      bordered
-      :customRow="customRow"
-      @change="paginationChange"
-      v-bind="{...$props, ...$attrs}"
+    :columns="columns"
+    :loading="loading"
+    :rowSelection="rowSelection"
+    :rowKey="rowKey"
+    size="middle"
+    :data-source="data"
+    :pagination="pageOption"
+    bordered
+    :customRow="customRow"
+    v-bind="{...$props, ...$attrs}"
+    @change="paginationChange"
   >
     <!--  自定义slots start-->
-    <template v-for="(value, key) in $slots" v-slot:[key]="slotProps">
+    <template v-for="(value, key) in $slots" #[key]="slotProps">
       <slot :name="key" v-bind="slotProps"></slot>
     </template>
 
@@ -22,7 +22,7 @@
     <!--    是否有自定义显示slots start-->
     <template v-for="slotItem in columns.filter(item => item.slots)"
               :key="slotItem.dataIndex || slotItem.slots.customRender"
-              v-slot:[slotItem.slots.customRender]="slotProps">
+              #[slotItem.slots.customRender]="slotProps">
 
       <!--        自定义渲染start-->
       <slot v-if="$slots[slotItem.slots.customRender]" :name="slotItem.slots.customRender" v-bind="slotProps"></slot>
@@ -34,7 +34,7 @@
         <template v-if="slotItem.slots.customRender !== 'action'">
           <!--        使用自定义组件格式化显示start-->
           <template v-if="slotItem.slotsType == 'component'">
-            <component :is="slotItem.slotsFunc(slotProps.record)"/>
+            <component :is="slotItem.slotsFunc(slotProps.record)" />
           </template>
           <!--        使用自定义组件格式化显示end-->
           <!--        使用自定义函数格式化显示-->
@@ -55,27 +55,27 @@
             <template v-if="action.type == 'select'">
               <!--              下拉选择器-->
               <a-select
-                  v-model:value="slotProps.record[action.key]"
-                  :key="index"
-                  size="small"
+                :key="index"
+                v-model:value="slotProps.record[action.key]"
+                size="small"
               >
-                <Option v-for="option in action.options" :value="option.value" :key="option.value">
+                <Option v-for="option in action.options" :key="option.value" :value="option.value">
                   {{ option.label }}
                 </Option>
               </a-select>
             </template>
             <!--            编辑按钮-->
-            <template v-if="action.type ==  'button'">
-              <a-button v-permission="action.permission"
-                        v-bind="{...buttonProps,...action.props}" @click="actionEvent(slotProps.record, action.func)"
-                        :key="index">
+            <template v-if="action.type == 'button'">
+              <a-button v-bind="{...buttonProps,...action.props}"
+                        :key="index" v-permission="action.permission"
+                        @click="actionEvent(slotProps.record, action.func)">
                 {{ action.text }}
               </a-button>
             </template>
             <!--            删除按钮 气泡确认框-->
             <template v-if="action.type == 'popconfirm'">
               <a-popconfirm :key="index" placement="leftTop" @confirm="actionEvent(slotProps.record, action.func, 'del')">
-                <template v-slot:title>
+                <template #title>
                   您确定要删除吗？
                 </template>
                 <a-button v-bind="{...buttonProps,...action.props}">
@@ -103,7 +103,8 @@ import {useDraggable, useDragCol} from './hooks'
 import {Columns, pageOption, Props} from './types'
 
 export default defineComponent({
-  name: 'dynamic-table',
+  name: 'DynamicTable',
+  inheritAttrs: false,
   props: {
     columns: {
       type: Object as PropType<Columns[]>

@@ -7,7 +7,7 @@ import {Modal, Table, Menu, Input, Form,Card, Checkbox, Radio} from 'ant-design-
 import 'ant-design-vue/dist/antd.css';
 
 export function setupAntd(app: App<Element>) {
-    app.component('a-button', AButton)
+    app.component('AButton', AButton)
 
     app.use(Form)
         .use(Input)

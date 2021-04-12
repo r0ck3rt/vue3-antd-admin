@@ -1,10 +1,10 @@
 <template>
   <a-modal
-      :title="Number.isInteger(fields.id) ? '编辑资源' : '新增资源'"
-      v-model:visible="visible"
-      :confirm-loading="confirmLoading"
-      :afterClose="remove"
-      @ok="handleOk"
+    v-model:visible="visible"
+    :title="Number.isInteger(fields.id) ? '编辑资源' : '新增资源'"
+    :confirm-loading="confirmLoading"
+    :afterClose="remove"
+    @ok="handleOk"
   >
     <a-form ref="formRef" :model="modelRef" :label-col="labelCol" :wrapper-col="wrapperCol">
       <a-form-item label="类别" :rules="rules.type" name="type">
@@ -17,28 +17,28 @@
           </a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item label="模块名称" :rules="rules.moduleName" name="moduleName" v-if="modelRef.type == 1">
-        <a-input v-model:value="modelRef.moduleName" :disabled="Number.isInteger(fields.id)" placeholder="请输入模块名称"/>
+      <a-form-item v-if="modelRef.type == 1" label="模块名称" :rules="rules.moduleName" name="moduleName">
+        <a-input v-model:value="modelRef.moduleName" :disabled="Number.isInteger(fields.id)" placeholder="请输入模块名称" />
       </a-form-item>
-      <a-form-item label="模块名称" :rules="rules.moduleId" name="moduleId" v-if="modelRef.type == 2">
+      <a-form-item v-if="modelRef.type == 2" label="模块名称" :rules="rules.moduleId" name="moduleId">
         <a-select v-model:value="modelRef.moduleId" :disabled="Number.isInteger(fields.id)" placeholder="请选择模块">
           <a-select-option v-for="item in moduleList" :key="item.id" :value="item.id">
             {{ item.moduleName }}
           </a-select-option>
         </a-select>
       </a-form-item>
-      <a-form-item label="菜单名称" :rules="rules.actionName" name="actionName" v-if="modelRef.type == 2">
-        <a-input v-model:value="modelRef.actionName" placeholder="请输入菜单名称"/>
+      <a-form-item v-if="modelRef.type == 2" label="菜单名称" :rules="rules.actionName" name="actionName">
+        <a-input v-model:value="modelRef.actionName" placeholder="请输入菜单名称" />
       </a-form-item>
       <a-form-item label="路径" :rules="rules.url" name="url">
-        <a-input v-model:value="modelRef.url" placeholder="请输入路径"/>
+        <a-input v-model:value="modelRef.url" placeholder="请输入路径" />
       </a-form-item>
       <a-form-item label="小图标">
-        <a-input v-model:value="modelRef.icon" placeholder="小图标"/>
+        <a-input v-model:value="modelRef.icon" placeholder="小图标" />
         <a :href="`${prefix}#/icons`" target="_blank">可选图标</a>
       </a-form-item>
       <a-form-item label="排序">
-        <a-input-number v-model:value="modelRef.sort" :min="1" placeholder="排序"/>
+        <a-input-number v-model:value="modelRef.sort" :min="1" placeholder="排序" />
       </a-form-item>
       <a-form-item label="keepAlive" name="keepAlive">
         <a-select v-model:value="modelRef.keepAlive" placeholder="是否缓存页面">
@@ -62,7 +62,7 @@ import {postAdminAccess, getAdminAccessModule, patchAdminAccess} from "@/api/sys
 const prefix = process.env.BASE_URL
 
 export default defineComponent({
-  name: "add-modal",
+  name: "AddModal",
   components: {[Modal.name]: Modal, [Form.name]: Form, [Form.Item.name]: Form.Item, [InputNumber.name]: InputNumber, [Input.name]: Input,[Select.name]: Select, ASelectOption: Select.Option},
   props: {
     remove: { // 移除模态框

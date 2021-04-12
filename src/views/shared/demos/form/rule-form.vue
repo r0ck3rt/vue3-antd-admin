@@ -1,16 +1,16 @@
 <template>
   <div>
     <a-alert
-        message="验证表单"
-        description="动态验证表单"
-        type="info"
-        show-icon
-        style="margin-bottom: 12px"
+      message="验证表单"
+      description="动态验证表单"
+      type="info"
+      show-icon
+      style="margin-bottom: 12px"
     />
     <a-card>
       <schema-form ref="dynamicForm" :form-schema="formSchema">
         <template #operate-button>
-          <a-button @click="confirm" type="primary">
+          <a-button type="primary" @click="confirm">
             确定
           </a-button>
         </template>
@@ -20,9 +20,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, ref, toRefs} from 'vue'
-import {Alert,Card} from 'ant-design-vue'
-import {AButton} from '@/components/button/'
+import {defineComponent, ref} from 'vue'
+import {Alert,Card, message} from 'ant-design-vue'
 import {SchemaForm} from '@/components/JSON-schema-form'
 import {getFormSchema} from './form-schema'
 
@@ -30,13 +29,13 @@ import {getFormSchema} from './form-schema'
  * @description 验证表单
  */
 export default defineComponent({
-  name: "rule-form",
-  components: { [Alert.name]: Alert, [Card.name]: Card, AButton, SchemaForm},
+  name: "RuleForm",
+  components: { [Alert.name]: Alert, [Card.name]: Card, SchemaForm},
   setup() {
     const dynamicForm = ref<any>(null)
 
     // 点击提交
-    const confirm = () => dynamicForm.value.validate()
+    const confirm = () => dynamicForm.value.validate().then(() => message.success('验证通过！'))
 
     return {
       dynamicForm,

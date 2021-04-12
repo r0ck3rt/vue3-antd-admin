@@ -1,29 +1,29 @@
 <template>
   <a-form
-      ref="schemaFormRef"
-      v-bind="formItemLayout"
+    ref="schemaFormRef"
+    v-bind="formItemLayout"
   >
     <template v-for="(formItem, index) in formSchema.formItem.filter(item => !item.hidden)"
               :key="formItem.field">
       <a-spin :spinning="formItem.loading || false">
         <a-form-item
-            :help="formItem.help"
-            :extra="formItem.extra"
-            :label="formItem.label"
-            :name="formItem.field"
-            v-bind="{...formItem.props,...validateInfos[formItem.field]}"
+          :help="formItem.help"
+          :extra="formItem.extra"
+          :label="formItem.label"
+          :name="formItem.field"
+          v-bind="{...formItem.props,...validateInfos[formItem.field]}"
         >
           <component
-              v-model:value="modelRef[formItem.field]"
-              :form-item="formItem"
-              v-on="{...getTriggerEvent(formItem)}"
-              :is="getComponent(formItem.type)"/>
+            :is="getComponent(formItem.type)"
+            v-model:value="modelRef[formItem.field]"
+            :form-item="formItem"
+            v-on="{...getTriggerEvent(formItem)}" />
         </a-form-item>
       </a-spin>
     </template>
     <template v-if="$slots['operate-button']">
-      <a-form-item :wrapper-col="{ span: formItemLayout.wrapperCol.span, offset: formItemLayout.labelCol.span,  }">
-        <slot name="operate-button"/>
+      <a-form-item :wrapper-col="{ span: formItemLayout.wrapperCol.span, offset: formItemLayout.labelCol.span, }">
+        <slot name="operate-button"></slot>
       </a-form-item>
     </template>
   </a-form>
@@ -38,7 +38,7 @@ import components from './components'
 import {FormItem, FormSchema} from "@/types/schema";
 
 export default defineComponent({
-  name: "dynamic-form",
+  name: "DynamicForm",
   components: {
     ...components,
     [Spin.name]: Spin,
@@ -86,7 +86,7 @@ export default defineComponent({
     // 异步设置默认数据
     props.formSchema.formItem.forEach(async (item: FormItem) => {
       // 是否需要loading
-      if (item?.hasOwnProperty('loading')) {
+      if (Object.prototype.hasOwnProperty.call(item, 'loading')) {
         item.loading = true
       }
       // 异步选项

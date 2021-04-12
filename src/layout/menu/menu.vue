@@ -1,14 +1,14 @@
 <template>
   <a-menu
-      v-model:open-keys="openKeys"
-      v-model:selected-keys="selectedKeys"
-      mode="inline"
-      theme="dark"
-      :inline-collapsed="collapsed"
-      @click="clickMenuItem"
+    v-model:open-keys="openKeys"
+    v-model:selected-keys="selectedKeys"
+    mode="inline"
+    theme="dark"
+    :inline-collapsed="collapsed"
+    @click="clickMenuItem"
   >
     <template v-for="item in menus" :key="item.name">
-      <menu-item :menu-info="item"/>
+      <menu-item :menu-info="item" />
     </template>
   </a-menu>
 </template>
@@ -31,6 +31,7 @@ import {useStore} from '@/store'
 import {routes} from "@/router";
 
 export default defineComponent({
+  name: 'Menu',
   components: {
     MenuItem,
     'a-sub-menu': Menu.SubMenu,

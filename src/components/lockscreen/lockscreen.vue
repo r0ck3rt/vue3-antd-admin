@@ -1,39 +1,39 @@
 <template>
-  <div @keyup="unLockLogin(true)" @mousedown.stop @contextmenu.prevent :class="{unLockLogin: isShowLogin}"
-       class="lockscreen">
+  <div :class="{unLockLogin: isShowLogin}" class="lockscreen" @keyup="unLockLogin(true)" @mousedown.stop
+       @contextmenu.prevent>
     <template v-if="!isShowLogin">
       <div class="lock-box">
         <div class="lock">
-          <span @click="unLockLogin(true)" class="lock-icon" title="解锁屏幕">
-            <lock-outlined/>
-            <unlock-outlined/>
+          <span class="lock-icon" title="解锁屏幕" @click="unLockLogin(true)">
+            <lock-outlined />
+            <unlock-outlined />
           </span>
         </div>
         <h6 class="tips">由于您长时间未操作，需重新输入登录密码解锁进入系统。</h6>
       </div>
       <!--      华为充电-->
       <component :is="Math.random() > 0.48 ? 'xiaomi-charge' : 'huawei-charge'" :battery="battery"
-                 :battery-status="batteryStatus" :calc-discharging-time="calcDischargingTime"/>
+                 :battery-status="batteryStatus" :calc-discharging-time="calcDischargingTime" />
       <!--      <xiaomi-charge :battery="battery" />-->
     </template>
     <template v-if="isShowLogin">
       <div class="login-box">
         <a-avatar :size="128">
-          <template v-slot:icon>
-            <user-outlined/>
+          <template #icon>
+            <user-outlined />
           </template>
         </a-avatar>
         <div class="username">{{ loginForm.username }}</div>
         <a-input-search
-            v-model:value="loginForm.password"
-            type="password"
-            autofocus
-            placeholder="请输入登录密码"
-            size="large"
-            @search="onLogin"
+          v-model:value="loginForm.password"
+          type="password"
+          autofocus
+          placeholder="请输入登录密码"
+          size="large"
+          @search="onLogin"
         >
-          <template v-slot:enterButton>
-            <LoadingOutlined  v-if="loginLoading"/>
+          <template #enterButton>
+            <LoadingOutlined v-if="loginLoading" />
             <arrow-right-outlined v-else />
           </template>
         </a-input-search>
@@ -50,10 +50,10 @@
         </div>
       </div>
       <div class="computer-status">
-      <span :class="{offline: !online}" class="network">
-        <wifi-outlined class="network"/>
-      </span>
-        <api-outlined/>
+        <span :class="{offline: !online}" class="network">
+          <wifi-outlined class="network" />
+        </span>
+        <api-outlined />
       </div>
     </template>
   </div>
@@ -84,7 +84,7 @@ import {LockscreenMutationType} from '@/store/modules/lockscreen/mutations'
 import {UserActionTypes} from '@/store/modules/user/actions'
 
 export default defineComponent({
-  name: "lockscreen",
+  name: "Lockscreen",
   components: {
     LockOutlined,
     LoadingOutlined,

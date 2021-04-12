@@ -1,24 +1,24 @@
 <template>
   <teleport to="body">
-    <div @click.self="isVisible = false" v-if="isVisible" class="preview-modal">
-      <close-circle-outlined @click="isVisible = false" class="close-icon" />
+    <div v-if="isVisible" class="preview-modal" @click.self="isVisible = false">
+      <close-circle-outlined class="close-icon" @click="isVisible = false" />
       <div class="preview-content" :style="contentStyle">
         <a-spin :spinning="loading">
-          <img @load.stop="imgLoaded" v-if="type === 'image'" ref="img" :style="imgStyle" :src="url"
-               alt=""/>
-          <video ref="video" @canplay="loading = false" @loadstart="loading = true" v-if="type === 'video'" :src="url"
-                 controls autoplay></video>
+          <img v-if="type === 'image'" ref="img" :style="imgStyle" :src="url" alt=""
+               @load.stop="imgLoaded" />
+          <video v-if="type === 'video'" ref="video" :src="url" controls autoplay
+                 @canplay="loading = false" @loadstart="loading = true"></video>
           <div ref="imgScaleMask" class="img-scale-mask">
             {{ ~~(imgScale * 100) + '%' }}
           </div>
         </a-spin>
       </div>
       <div v-if="type === 'image'" class="toolbar">
-        <zoom-in-outlined @click="zoomInImg" title="放大"/>
-        <zoom-out-outlined @click="zoomOutImg" title="缩放"/>
-        <one-to-one-outlined @click="resetImg" title="原始比例" />
-        <redo-outlined @click="rotateImg" title="旋转"/>
-        <download-outlined @click="saveImg(url)" title="下载"/>
+        <zoom-in-outlined title="放大" @click="zoomInImg" />
+        <zoom-out-outlined title="缩放" @click="zoomOutImg" />
+        <one-to-one-outlined title="原始比例" @click="resetImg" />
+        <redo-outlined title="旋转" @click="rotateImg" />
+        <download-outlined title="下载" @click="saveImg(url)" />
       </div>
     </div>
   </teleport>
@@ -31,9 +31,9 @@ import {ZoomInOutlined, ZoomOutOutlined, RedoOutlined, DownloadOutlined,OneToOne
 import {downloadByUrl} from "@/utils/downloadFile";
 
 export default defineComponent({
-  name: 'preview-modal',
-  emits: ['update:visible'],
+  name: 'PreviewModal',
   components: {ZoomInOutlined, ZoomOutOutlined, RedoOutlined, DownloadOutlined, CloseCircleOutlined,OneToOneOutlined, [Spin.name]: Spin},
+  emits: ['update:visible'],
   props: {
     visible: {
       type: Boolean as PropType<boolean>,

@@ -1,12 +1,13 @@
 <template>
   <svg :class="svgClass" aria-hidden="true">
-    <use :xlink:href="iconName"/>
+    <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script lang="ts">
 import {defineComponent, computed} from 'vue'
 
+// eslint-disable-next-line no-undef
 const importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 try {
   importAll(require.context('@/assets/icons', true, /\.svg$/));
@@ -20,7 +21,7 @@ interface SvgIcon {
 }
 
 export default defineComponent({
-  name: 'svg-icon',
+  name: 'SvgIcon',
   props: {
     iconClass: {
       type: String,

@@ -5,7 +5,7 @@
       <h1>OOPS！你好像走丢了...</h1>
       <router-link to="/" class="ant-btn ant-btn-primary">回到首页</router-link>
     </div>
-    <img src="~@/assets/404.gif" alt="">
+    <img src="~@/assets/404.gif" alt="" />
   </div>
 </template>
 

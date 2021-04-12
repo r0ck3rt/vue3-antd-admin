@@ -6,7 +6,7 @@
           右边内容区
         </slot>
       </div>
-      <div ref="separator" @mousedown="startDrag" class="separator">
+      <div ref="separator" class="separator" @mousedown="startDrag">
         <i></i><i></i>
       </div>
     </div>
@@ -23,12 +23,10 @@ import {defineComponent, ref} from 'vue'
 
 import { throttle } from 'lodash'
 
-type RefElement = Nullable<HTMLElement>
-
 export default defineComponent({
-  name: "split-panel",
+  name: "SplitPanel",
   setup() {
-    const scalable = ref<RefElement>(null)
+    const scalable = ref<any>(null)
 
     let startX: number
     let startWidth: number

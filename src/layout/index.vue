@@ -2,19 +2,19 @@
   <a-layout class="layout">
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible class="layout-sider">
       <!--      网站logo start-->
-      <logo :collapsed="collapsed"/>
+      <logo :collapsed="collapsed" />
       <!--      网站logo end-->
       <!--      侧边菜单栏start-->
-      <aside-menu :collapsed="collapsed"/>
+      <aside-menu :collapsed="collapsed" />
       <!--      侧边菜单栏end-->
     </a-layout-sider>
     <a-layout>
       <!--      页头 start-->
-      <page-header v-model:collapsed="collapsed"/>
+      <page-header v-model:collapsed="collapsed" />
       <!--      页头end-->
       <!--      内容区域start-->
       <a-layout-content class="layout-content">
-        <tabs-view/>
+        <tabs-view />
       </a-layout-content>
       <!--      内容区域end-->
       <!--      页脚start-->

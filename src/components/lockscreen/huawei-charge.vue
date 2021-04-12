@@ -13,8 +13,8 @@
         剩余可使用时间：{{ calcDischargingTime }}
       </div>
       <span v-show="Number.isFinite(battery.chargingTime) && battery.chargingTime != 0">
-          距离电池充满需要：{{ calcDischargingTime }}
-        </span>
+        距离电池充满需要：{{ calcDischargingTime }}
+      </span>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "huawei-charge",
+  name: "HuaweiCharge",
   // props: ['batteryStatus', 'battery', 'calcDischargingTime'],
   props: {
     battery: { // 电池对象

@@ -7,6 +7,7 @@ import {Empty} from 'ant-design-vue'
 import common from "@/router/common";
 import {RouteRecordRaw} from "vue-router";
 
+
 /**
  * 异步生成菜单树， 方案二
  * @param dataList
@@ -69,12 +70,14 @@ export const generatorDynamicRouter = (): Promise<RouteRecordRaw[]> => {
                 if (item.children?.length > 0 && !item.redirect) {
                     item.redirect = {name: item.children[0].name}
                 }
-            })
+            });
             const layout = routes.find(item => item.name == 'Layout')!
             layout.children = [
                 ...common,
                 ...routeList
             ]
+            // const routes = [...common,...routeList]
+            // routes.forEach(item => router.addRoute('Layout', item))
             router.addRoute(layout)
             router.addRoute(notFound)
             resolve(layout.children)
