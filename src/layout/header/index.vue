@@ -60,8 +60,6 @@ import {message, Modal} from 'ant-design-vue'
 import {QuestionCircleOutlined} from '@ant-design/icons-vue'
 import {useStore} from '@/store'
 import {TABS_ROUTES} from "@/store/mutation-types";
-import {LockscreenMutationType} from "@/store/modules/lockscreen/mutations";
-import {UserActionTypes} from "@/store/modules/user/actions";
 
 export default defineComponent({
   name: "PageHeader",
@@ -75,7 +73,7 @@ export default defineComponent({
     const store = useStore()
 
     const state = reactive({
-      username: store.getters.userInfo.username,
+      username: store.getters["user/userInfo"]?.username,
       fullscreenIcon: 'FullscreenOutlined'
     })
 
@@ -92,7 +90,7 @@ export default defineComponent({
         onOk: () => {
           console.log(router, '退出登录')
           // logout({})
-          store.dispatch(UserActionTypes.Logout).then(res => {
+          store.dispatch('user/logout').then(res => {
             message.success('成功退出登录')
             // 移除标签页
             localStorage.removeItem(TABS_ROUTES)
@@ -145,7 +143,7 @@ export default defineComponent({
         icon: 'LockOutlined',
         tips: '锁屏',
         eventObject: {
-          click: () => store.commit(LockscreenMutationType.SetLock, true)
+          click: () => store.commit('lockscreen/setLock', true)
         }
       },
     ]

@@ -40,7 +40,7 @@ export default defineComponent({
     EllipsisOutlined,
   },
   setup() {
-    const userInfo = useStore().getters.userInfo
+    const userInfo = useStore().getters["user/userInfo"]
     // 是否联网
     const {online} = useOnline()
     // 获取电池信息

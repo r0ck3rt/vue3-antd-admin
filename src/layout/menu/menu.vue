@@ -63,7 +63,7 @@ export default defineComponent({
       selectedKeys: [currentRoute.name]
     })
 
-    const menus = computed(() => store.getters.menus.length > 0 ? store.getters.menus : routes.find(item => item.name == 'Layout')!.children)
+    const menus = computed(() => store.getters["asyncRoute/menus"] ?? routes.find(item => item.name == 'Layout')!.children)
 
     // 监听菜单收缩状态
     watch(() => props.collapsed, (newVal) => {

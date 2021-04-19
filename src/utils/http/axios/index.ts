@@ -19,7 +19,6 @@ import store from '@/store'
 import {storage} from "@/utils/Storage";
 /**
  * @description: 数据处理，方便区分多种处理方式
- * axios封装使用了https://github.com/anncwb/vue-vben-admin/tree/main/src/utils/http/axios
  */
 const transform: AxiosTransform = {
     /**
@@ -213,7 +212,7 @@ const Axios = new VAxios({
         // 消息提示类型
         errorMessageMode: 'none',
         // 接口地址
-        apiUrl: process.env.VUE_APP_API_URL1,
+        apiUrl: process.env.VUE_APP_API_URL,
     },
     withCredentials: false
 });

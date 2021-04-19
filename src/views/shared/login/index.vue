@@ -32,14 +32,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs, onMounted} from 'vue'
+import {defineComponent, reactive, toRefs} from 'vue'
 import {message} from 'ant-design-vue'
 import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
-import md5 from 'blueimp-md5'
+// import md5 from 'blueimp-md5'
 // ~@/assets/logo.png
 import {useRoute, useRouter} from "vue-router";
 import {useStore} from '@/store'
-import {UserActionTypes} from '@/store/modules/user/actions'
 import {login} from "@/api/system/user";
 
 import {SvgIcon} from '@/components/svg-icon'
@@ -71,7 +70,7 @@ export default defineComponent({
         password
       }
       // params.password = md5(password)
-      const {code, result, message: msg} = await store.dispatch(UserActionTypes.Login, params).finally(() => {
+      const {code, result, message: msg} = await store.dispatch('user/login', params).finally(() => {
         state.loading = false
         message.destroy()
       })
