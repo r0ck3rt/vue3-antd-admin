@@ -10,9 +10,7 @@
     <a-card>
       <schema-form ref="dynamicForm" :form-schema="formSchema">
         <template #operate-button>
-          <a-button type="primary" @click="confirm">
-            确定
-          </a-button>
+          <a-button type="primary" @click="confirm"> 确定 </a-button>
         </template>
       </schema-form>
     </a-card>
@@ -20,17 +18,17 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue'
-import {Alert,Card, message} from 'ant-design-vue'
-import {SchemaForm} from '@/components/JSON-schema-form'
-import {getFormSchema} from './form-schema'
+import { defineComponent, ref } from 'vue'
+import { Alert, Card, message } from 'ant-design-vue'
+import { SchemaForm } from '@/components/JSON-schema-form'
+import { getFormSchema } from './form-schema'
 
 /**
  * @description 验证表单
  */
 export default defineComponent({
-  name: "RuleForm",
-  components: { [Alert.name]: Alert, [Card.name]: Card, SchemaForm},
+  name: 'RuleForm',
+  components: { [Alert.name]: Alert, [Card.name]: Card, SchemaForm },
   setup() {
     const dynamicForm = ref<any>(null)
 

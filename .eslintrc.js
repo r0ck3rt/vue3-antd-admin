@@ -3,7 +3,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -12,19 +12,19 @@ module.exports = {
     sourceType: 'module',
     jsxPragma: 'React',
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
-    '@vue/typescript/recommended'
-    // 'prettier',
-    // 'plugin:prettier/recommended',
+    '@vue/typescript/recommended',
+    'prettier',
+    'plugin:prettier/recommended'
   ],
   rules: {
-    "vue/no-unused-components": "off",
+    'vue/no-unused-components': 'off',
     'vue/no-unused-vars': 'off',
     'vue/no-v-for-template-key-on-child': 'off',
     'vue/custom-event-name-casing': 'off',
@@ -59,11 +59,11 @@ module.exports = {
         html: {
           void: 'always',
           normal: 'never',
-          component: 'always',
+          component: 'always'
         },
         svg: 'always',
-        math: 'always',
-      },
-    ],
+        math: 'always'
+      }
+    ]
   }
 }

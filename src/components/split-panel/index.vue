@@ -2,29 +2,23 @@
   <div class="split-wrapper">
     <div ref="scalable" class="scalable">
       <div class="left-content">
-        <slot name="left-content">
-          右边内容区
-        </slot>
+        <slot name="left-content"> 右边内容区 </slot>
       </div>
-      <div ref="separator" class="separator" @mousedown="startDrag">
-        <i></i><i></i>
-      </div>
+      <div ref="separator" class="separator" @mousedown="startDrag"><i></i><i></i></div>
     </div>
     <div class="right-content">
-      <slot name="right-content">
-        右边内容区
-      </slot>
+      <slot name="right-content"> 右边内容区 </slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue'
+import { defineComponent, ref } from 'vue'
 
 import { throttle } from 'lodash'
 
 export default defineComponent({
-  name: "SplitPanel",
+  name: 'SplitPanel',
   setup() {
     const scalable = ref<any>(null)
 
@@ -104,7 +98,8 @@ export default defineComponent({
     flex: 1;
   }
 
-  .left-content,.right-content {
+  .left-content,
+  .right-content {
     overflow: auto;
   }
 }

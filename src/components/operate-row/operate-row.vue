@@ -2,10 +2,7 @@
   <div class="actions">
     <slot name="before"></slot>
     <template v-if="!hideDel">
-      <a-popconfirm
-        title="您确定要删除该节点吗?"
-        @confirm="() => $emit('delete')"
-      >
+      <a-popconfirm title="您确定要删除该节点吗?" @confirm="() => $emit('delete')">
         <delete-outlined @click.stop />
       </a-popconfirm>
     </template>
@@ -16,13 +13,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import {DeleteOutlined, FormOutlined, PlusOutlined} from "@ant-design/icons-vue";
-import {Popconfirm} from 'ant-design-vue'
+import { defineComponent } from 'vue'
+import { DeleteOutlined, FormOutlined, PlusOutlined } from '@ant-design/icons-vue'
+import { Popconfirm } from 'ant-design-vue'
 
 export default defineComponent({
-  name: "OperateRow",
-  components: {DeleteOutlined, PlusOutlined, FormOutlined, [Popconfirm.name]: Popconfirm},
+  name: 'OperateRow',
+  components: { DeleteOutlined, PlusOutlined, FormOutlined, [Popconfirm.name]: Popconfirm },
   props: {
     hideAdd: {
       type: Boolean,
@@ -39,9 +36,7 @@ export default defineComponent({
   },
   emits: ['delete', 'edit', 'add'],
   setup() {
-    return {
-
-    }
+    return {}
   }
 })
 </script>

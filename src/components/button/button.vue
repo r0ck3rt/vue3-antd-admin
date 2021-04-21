@@ -11,19 +11,19 @@
 </template>
 
 <script lang="ts">
-import {Button} from 'ant-design-vue'
-import {PropType, defineComponent} from "vue";
-import {ButtonType} from "ant-design-vue/lib/button/buttonTypes";
+import { Button } from 'ant-design-vue'
+import { PropType, defineComponent } from 'vue'
+import { ButtonType } from 'ant-design-vue/lib/button/buttonTypes'
 // import buttonProps from 'ant-design-vue/lib/button/buttonTypes'
 
-const buttonTypes = ["default", "primary", "ghost", "dashed", "danger", "link"]
+const buttonTypes = ['default', 'primary', 'ghost', 'dashed', 'danger', 'link']
 
 export default defineComponent({
-  name: "AButton",
-  components: {'antd-button': Button}, // 换个名称，避免成死递归组件
+  name: 'AButton',
+  components: { 'antd-button': Button }, // 换个名称，避免成死递归组件
   props: {
     type: {
-      type: String as PropType<ButtonType | "warning" | 'success'>,
+      type: String as PropType<ButtonType | 'warning' | 'success'>,
       default: 'default'
     }
   },
@@ -36,9 +36,9 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-@import "./styles/success";
+@import './styles/success';
 </style>
 
 <style lang="less" scoped>
-@import "./styles/warning";
+@import './styles/warning';
 </style>

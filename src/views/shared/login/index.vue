@@ -12,18 +12,18 @@
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-input v-model:value="formInline.password" size="large" type="password" placeholder="123456" autocomplete="new-password">
+        <a-input
+          v-model:value="formInline.password"
+          size="large"
+          type="password"
+          placeholder="123456"
+          autocomplete="new-password"
+        >
           <template #prefix><lock-outlined type="user" /></template>
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-button
-          type="primary"
-          html-type="submit"
-          size="large"
-          :loading="loading"
-          block
-        >
+        <a-button type="primary" html-type="submit" size="large" :loading="loading" block>
           登录
         </a-button>
       </a-form-item>
@@ -32,26 +32,26 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from 'vue'
-import {message} from 'ant-design-vue'
-import {UserOutlined, LockOutlined} from '@ant-design/icons-vue'
+import { defineComponent, reactive, toRefs } from 'vue'
+import { message } from 'ant-design-vue'
+import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 // import md5 from 'blueimp-md5'
 // ~@/assets/logo.png
-import {useRoute, useRouter} from "vue-router";
-import {useStore} from '@/store'
-import {login} from "@/api/system/user";
+import { useRoute, useRouter } from 'vue-router'
+import { useStore } from '@/store'
+import { login } from '@/api/system/user'
 
-import {SvgIcon} from '@/components/svg-icon'
+import { SvgIcon } from '@/components/svg-icon'
 
 export default defineComponent({
-  name: "Login",
-  components: {UserOutlined, LockOutlined, SvgIcon},
+  name: 'Login',
+  components: { UserOutlined, LockOutlined, SvgIcon },
   setup() {
     const state = reactive({
       loading: false,
       formInline: {
         username: '',
-        password: '',
+        password: ''
       }
     })
 
@@ -60,8 +60,9 @@ export default defineComponent({
     const route = useRoute()
 
     const handleSubmit = async () => {
-      const {username, password} = state.formInline
-      if(username.trim() == '' || password.trim() == '') return message.warning('用户名或密码不能为空！')
+      const { username, password } = state.formInline
+      if (username.trim() == '' || password.trim() == '')
+        return message.warning('用户名或密码不能为空！')
       const hide = message.loading('登录中...', 0)
       state.loading = true
       console.log(state.formInline)
@@ -70,14 +71,16 @@ export default defineComponent({
         password
       }
       // params.password = md5(password)
-      const {code, result, message: msg} = await store.dispatch('user/login', params).finally(() => {
-        state.loading = false
-        message.destroy()
-      })
+      const { code, result, message: msg } = await store
+        .dispatch('user/login', params)
+        .finally(() => {
+          state.loading = false
+          message.destroy()
+        })
       if (code == 0) {
         const toPath = decodeURIComponent((route.query?.redirect || '/') as string)
         message.success('登录成功！')
-        router.replace(toPath).then(_ => {
+        router.replace(toPath).then((_) => {
           if (route.name == 'login') {
             router.replace('/')
           }
@@ -102,7 +105,7 @@ export default defineComponent({
   padding-top: 240px;
   flex-direction: column;
   align-items: center;
-  background: url("~@/assets/login.svg");
+  background: url('~@/assets/login.svg');
   background-size: 100%;
 
   .login-logo {
@@ -123,15 +126,15 @@ export default defineComponent({
     }
   }
 
-    ::v-deep(.ant-form) {
-      width: 400px;
+  ::v-deep(.ant-form) {
+    width: 400px;
 
-      .ant-col {
-        width: 100%;
-      }
-      .ant-form-item-label {
-        padding-right: 6px;
-      }
+    .ant-col {
+      width: 100%;
+    }
+    .ant-form-item-label {
+      padding-right: 6px;
+    }
   }
 }
 </style>

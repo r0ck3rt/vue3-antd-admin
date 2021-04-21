@@ -27,12 +27,12 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import {Menu} from 'ant-design-vue'
-import {IconFont} from '@/components/iconfont'
+import { defineComponent } from 'vue'
+import { Menu } from 'ant-design-vue'
+import { IconFont } from '@/components/iconfont'
 
 export default defineComponent({
-  name: "MenuItem",
+  name: 'MenuItem',
   components: {
     IconFont,
     'a-sub-menu': Menu.SubMenu,
@@ -41,12 +41,10 @@ export default defineComponent({
   props: {
     menuInfo: {
       type: Object,
-      default: () => ({}),
-    },
-  },
+      default: () => ({})
+    }
+  }
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

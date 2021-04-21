@@ -1,37 +1,57 @@
 <template>
-  <dynamic-table ref="tableRef" :columns="columns" :get-list-func="getAdminAccess" rowKey="id" :row-selection="rowSelection"
-                 @expand="expand">
+  <dynamic-table
+    ref="tableRef"
+    :columns="columns"
+    :get-list-func="getAdminAccess"
+    rowKey="id"
+    :row-selection="rowSelection"
+    @expand="expand"
+  >
     <template #title>
-      <a-button v-permission="{ action: 'create', effect: 'disabled' }" type="primary" @click="addItem">
+      <a-button
+        v-permission="{ action: 'create', effect: 'disabled' }"
+        type="primary"
+        @click="addItem"
+      >
         添加
       </a-button>
-      <a-button v-permission="{ action: 'delete' }" :disabled="isDisabled" type="primary" @click="deleteItems">
+      <a-button
+        v-permission="{ action: 'delete' }"
+        :disabled="isDisabled"
+        type="primary"
+        @click="deleteItems"
+      >
         删除
       </a-button>
     </template>
-    <template #moduleName="{record}">
-      <span :ref="el => { if (el) itemRefs[record.id] = el }">
+    <template #moduleName="{ record }">
+      <span
+        :ref="
+          (el) => {
+            if (el) itemRefs[record.id] = el
+          }
+        "
+      >
         {{ record.moduleName || record.actionName }}
       </span>
     </template>
   </dynamic-table>
 </template>
 <script lang="ts">
-import {defineComponent, reactive, toRefs, createVNode, computed, ref} from 'vue'
-import {Modal} from 'ant-design-vue'
-import {QuestionCircleOutlined} from '@ant-design/icons-vue'
-import {DynamicTable} from '@/components/dynamic-table'
-import {delAdminAccess, getAdminAccess} from '@/api/system/access'
+import { defineComponent, reactive, toRefs, createVNode, computed, ref } from 'vue'
+import { Modal } from 'ant-design-vue'
+import { QuestionCircleOutlined } from '@ant-design/icons-vue'
+import { DynamicTable } from '@/components/dynamic-table'
+import { delAdminAccess, getAdminAccess } from '@/api/system/access'
 import AddModal from './add-modal.vue'
-import {columns} from "./columns";
-import {useExpandLoading} from '@/components/dynamic-table/hooks'
-import {useCreateModal} from "@/hooks";
-
+import { columns } from './columns'
+import { useExpandLoading } from '@/components/dynamic-table/hooks'
+import { useCreateModal } from '@/hooks'
 
 export default defineComponent({
   name: 'SystemAccess',
   components: {
-    DynamicTable,
+    DynamicTable
   },
   setup() {
     const tableRef = ref<any>(null)
@@ -42,10 +62,10 @@ export default defineComponent({
       tableLoading: false,
       rowSelection: {
         onChange: (selectedRowKeys, selectedRows) => {
-          state.rowSelection.selectedRowKeys = selectedRowKeys;
+          state.rowSelection.selectedRowKeys = selectedRowKeys
         },
         selectedRowKeys: []
-      },
+      }
     })
 
     // 删除多项
@@ -82,7 +102,7 @@ export default defineComponent({
         record,
         expandItemEl,
         asyncFunc: getAdminAccess,
-        params: {id: record.id, limit: 100}
+        params: { id: record.id, limit: 100 }
       })
       if (result?.data) {
         record.children = result.data
@@ -98,7 +118,7 @@ export default defineComponent({
       expand,
       getAdminAccess,
       addItem,
-      deleteItems,
+      deleteItems
     }
   }
 })

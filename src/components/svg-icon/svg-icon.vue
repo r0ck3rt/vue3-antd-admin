@@ -5,19 +5,20 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed} from 'vue'
+import { defineComponent, computed } from 'vue'
 
 // eslint-disable-next-line no-undef
-const importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
+const importAll = (requireContext: __WebpackModuleApi.RequireContext) =>
+  requireContext.keys().forEach(requireContext)
 try {
-  importAll(require.context('@/assets/icons', true, /\.svg$/));
+  importAll(require.context('@/assets/icons', true, /\.svg$/))
 } catch (error) {
-  console.log(error);
+  console.log(error)
 }
 
 interface SvgIcon {
-  iconClass: string;
-  className?: string;
+  iconClass: string
+  className?: string
 }
 
 export default defineComponent({
@@ -33,7 +34,6 @@ export default defineComponent({
     }
   },
   setup(props: SvgIcon) {
-
     const iconName = computed(() => `#icon-${props.iconClass}`)
     const svgClass = computed(() => 'svg-icon')
 

@@ -15,16 +15,16 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from 'vue'
-import {Alert,Card} from 'ant-design-vue'
-import {ACustomModal} from '@/components/a-custom-modal'
+import { defineComponent, reactive, toRefs } from 'vue'
+import { Alert, Card } from 'ant-design-vue'
+import { ACustomModal } from '@/components/a-custom-modal'
 
 /**
  * @description 扩展ant-design-vue模态框功能
  */
 export default defineComponent({
-  name: "CustomModal",
-  components: { [Alert.name]: Alert, [Card.name]: Card, ACustomModal},
+  name: 'CustomModal',
+  components: { [Alert.name]: Alert, [Card.name]: Card, ACustomModal },
   setup() {
     const state = reactive({
       visible: false
@@ -37,6 +37,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

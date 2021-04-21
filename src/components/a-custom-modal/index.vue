@@ -39,7 +39,9 @@
                   <slot name="footer">
                     <div>
                       <a-button @click="closeModal">取 消</a-button>
-                      <a-button type="primary" :loading="confirmLoading" @click="closeModal">确 认</a-button>
+                      <a-button type="primary" :loading="confirmLoading" @click="closeModal"
+                        >确 认</a-button
+                      >
                     </div>
                   </slot>
                 </div>
@@ -53,41 +55,46 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType, SetupContext,} from 'vue'
+import { defineComponent, PropType, SetupContext } from 'vue'
 import { Transition } from 'ant-design-vue/lib/_util/transition'
-import useModal from "@/components/a-custom-modal/useModal";
+import useModal from '@/components/a-custom-modal/useModal'
 
 export default defineComponent({
-  name: "ACustomModal",
-  components: {Transition},
+  name: 'ACustomModal',
+  components: { Transition },
   emits: ['update:visible'],
   props: {
     title: {
       type: String as PropType<string>,
       default: '标题'
     },
-    visible: { // 弹出显隐
+    visible: {
+      // 弹出显隐
       type: Boolean as PropType<boolean>,
       default: false
     },
-    destroyOnClose: { // 关闭后销毁
+    destroyOnClose: {
+      // 关闭后销毁
       type: Boolean as PropType<boolean>,
       default: false
     },
-    footer: { // 底部内容，当不需要默认底部按钮时，可以设为 :footer="null"	string|slot
+    footer: {
+      // 底部内容，当不需要默认底部按钮时，可以设为 :footer="null"	string|slot
       default: 'I am footer'
     },
-    confirmLoading: { // 确定按钮 loading
+    confirmLoading: {
+      // 确定按钮 loading
       type: Boolean as PropType<boolean>,
       default: false
     },
-    centered: { // 垂直居中展示 Modal
+    centered: {
+      // 垂直居中展示 Modal
       type: Boolean as PropType<boolean>,
       default: false
     }
   },
-  setup(props, ctx: SetupContext ) {
-      return useModal(props, ctx)
+  setup(props, ctx: SetupContext) {
+    return useModal(props, ctx)
   }
 })
 </script>

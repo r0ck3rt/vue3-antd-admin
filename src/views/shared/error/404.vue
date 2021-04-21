@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import {routes} from "@/router";
+import { defineComponent } from 'vue'
+import { routes } from '@/router'
 export default defineComponent({
-  name: "404",
+  name: '404'
 })
 </script>
 

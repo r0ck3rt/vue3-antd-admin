@@ -3,12 +3,13 @@
     v-model:value="modelValue"
     v-bind="formItem.props"
     autocomplete="new-password"
-    v-on="formItem.eventObject" />
+    v-on="formItem.eventObject"
+  />
 </template>
 <script lang="ts">
-import {defineComponent, PropType, computed} from 'vue'
-import {Input} from 'ant-design-vue'
-import {FormItem} from "@/types/schema";
+import { defineComponent, PropType, computed } from 'vue'
+import { Input } from 'ant-design-vue'
+import { FormItem } from '@/types/schema'
 
 export default defineComponent({
   name: 'SchemaFormInput',
@@ -17,14 +18,14 @@ export default defineComponent({
   },
   emits: ['update:value'],
   props: {
-    formItem: { // 表单项
+    formItem: {
+      // 表单项
       type: Object as PropType<FormItem>,
       default: () => ({})
     },
     value: undefined as any // 表单项值
   },
-  setup(props, {attrs, emit}) {
-
+  setup(props, { attrs, emit }) {
     const modelValue = computed({
       get: () => props.value,
       set: (val) => emit('update:value', val)

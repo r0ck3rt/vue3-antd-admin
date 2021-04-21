@@ -15,8 +15,8 @@ import tabsView from './tabs-view'
 import lockscreen from './lockscreen'
 
 export default {
-    asyncRoute,
-    user,
-    tabsView,
-    lockscreen
+  asyncRoute,
+  user,
+  tabsView,
+  lockscreen
 }

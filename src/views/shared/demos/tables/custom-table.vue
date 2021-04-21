@@ -9,12 +9,8 @@
     <a-card>
       <dynamic-table ref="tableRef" :columns="columns" rowKey="id">
         <template #title>
-          <a-button type="primary">
-            添加
-          </a-button>
-          <a-button type="primary">
-            删除
-          </a-button>
+          <a-button type="primary"> 添加 </a-button>
+          <a-button type="primary"> 删除 </a-button>
         </template>
       </dynamic-table>
     </a-card>
@@ -22,18 +18,17 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from 'vue'
-import {Alert,Card} from 'ant-design-vue'
+import { defineComponent, reactive, toRefs } from 'vue'
+import { Alert, Card } from 'ant-design-vue'
 import AButton from '@/components/button/index'
 
 /**
  * @description 扩展ant-design-vue表格功能
  */
 export default defineComponent({
-  name: "CustomModal",
-  components: { [Alert.name]: Alert, [Card.name]: Card, AButton},
+  name: 'CustomModal',
+  components: { [Alert.name]: Alert, [Card.name]: Card, AButton }
 })
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

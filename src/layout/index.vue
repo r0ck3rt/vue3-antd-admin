@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts">
-import  {defineComponent, ref, h, computed} from 'vue'
-import {Layout, message} from 'ant-design-vue'
+import { defineComponent, ref, h, computed } from 'vue'
+import { Layout, message } from 'ant-design-vue'
 import Logo from './logo/index.vue'
-import {TabsView} from './tabs'
+import { TabsView } from './tabs'
 import AsideMenu from './menu/menu.vue'
 import PageHeader from './header/index.vue'
 import PageFooter from './footer'
@@ -43,7 +43,7 @@ export default defineComponent({
     PageFooter,
     [Layout.name]: Layout,
     [Layout.Content.name]: Layout.Content,
-    [Layout.Sider.name]: Layout.Sider,
+    [Layout.Sider.name]: Layout.Sider
   },
   setup() {
     const collapsed = ref<boolean>(false)
@@ -52,7 +52,7 @@ export default defineComponent({
       message.success(h('span', '啥子'), 2)
     }
 
-    const asiderWidth = computed(() => collapsed.value ? '80px' : '256px')
+    const asiderWidth = computed(() => (collapsed.value ? '80px' : '256px'))
 
     return {
       collapsed,
@@ -61,7 +61,6 @@ export default defineComponent({
     }
   }
 })
-
 </script>
 
 <style lang="scss" scoped>
@@ -71,7 +70,6 @@ export default defineComponent({
   height: 100vh;
 
   .layout-sider {
-
   }
 
   .ant-layout {
