@@ -132,7 +132,7 @@ export default defineComponent({
         icon: 'GithubOutlined',
         tips: 'github',
         eventObject: {
-          click: () => window.open('https://github.com/buqiyuan/vue3-antd')
+          click: () => window.open('https://github.com/buqiyuan/vue3-antd-admin')
         }
       },
       {
