@@ -94,8 +94,8 @@ export default defineComponent({
       ...toRefs(state),
       columns,
       tableRef,
-      getAdminRole,
       isDisabled,
+      getAdminRole,
       addItem,
       deleteItems
     }

@@ -18,8 +18,6 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'eslint:recommended',
-    '@vue/typescript/recommended',
     'prettier',
     'plugin:prettier/recommended'
   ],
@@ -38,7 +36,20 @@ module.exports = {
     'vue/require-default-prop': 'off',
 
     'space-before-function-paren': 'off',
-
+    // '@typescript-eslint/no-unused-vars': [
+    //   'error',
+    //   {
+    //     argsIgnorePattern: '^_',
+    //     varsIgnorePattern: '^_'
+    //   }
+    // ],
+    // 'no-unused-vars': [
+    //   'error',
+    //   {
+    //     argsIgnorePattern: '^_',
+    //     varsIgnorePattern: '^_'
+    //   }
+    // ],
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

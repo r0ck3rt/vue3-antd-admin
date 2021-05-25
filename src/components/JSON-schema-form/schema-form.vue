@@ -49,7 +49,6 @@ import { Form, Spin } from 'ant-design-vue'
 import { useForm } from '@ant-design-vue/use'
 import { isString, isFunction, isAsyncFunction } from '@/utils/is'
 import components from './components'
-import { FormItem, FormSchema } from '@/types/schema'
 
 export default defineComponent({
   name: 'DynamicForm',
@@ -71,7 +70,7 @@ export default defineComponent({
       default: () => ({})
     }
   },
-  setup(props, ctx) {
+  setup(props) {
     // a-form
     const schemaFormRef = ref<any>(null)
     // 表单实例
@@ -170,8 +169,10 @@ export default defineComponent({
     }
 
     // 设置触发表单项验证的事件
-    const setTriggerEvent = ({ field, trigger }) => () =>
-      validate(field, { trigger }).catch(() => ({}))
+    const setTriggerEvent =
+      ({ field, trigger }) =>
+      () =>
+        validate(field, { trigger }).catch(() => ({}))
 
     // 获取触发表单项验证的时机
     const getTriggerEvent = (formItem) => {

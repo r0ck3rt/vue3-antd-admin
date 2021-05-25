@@ -5,7 +5,7 @@ import { Empty } from 'ant-design-vue'
 
 export default defineComponent({
   name: 'Redirect',
-  setup(props) {
+  setup() {
     const route = useRoute()
     const router = useRouter()
     onBeforeMount(() => {
