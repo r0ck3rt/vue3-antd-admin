@@ -69,6 +69,7 @@ export default defineComponent({
       type: Boolean
     }
   },
+  emits: ['update:collapsed'],
   setup() {
     const store = useStore()
 
@@ -165,15 +166,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .layout-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: #fff;
-  padding: 0;
+  display: flex;
   height: $header-height;
+  padding: 0;
+  background-color: #fff;
+  justify-content: space-between;
+  align-items: center;
 
   .left-options {
     display: flex;

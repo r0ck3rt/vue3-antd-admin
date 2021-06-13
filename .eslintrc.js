@@ -36,20 +36,9 @@ module.exports = {
     'vue/require-default-prop': 'off',
 
     'space-before-function-paren': 'off',
-    // '@typescript-eslint/no-unused-vars': [
-    //   'error',
-    //   {
-    //     argsIgnorePattern: '^_',
-    //     varsIgnorePattern: '^_'
-    //   }
-    // ],
-    // 'no-unused-vars': [
-    //   'error',
-    //   {
-    //     argsIgnorePattern: '^_',
-    //     varsIgnorePattern: '^_'
-    //   }
-    // ],
+    'no-unused-vars': 'off',
+
+    '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

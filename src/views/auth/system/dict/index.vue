@@ -8,15 +8,15 @@
   >
     <template #title>
       <a-button
-        type="primary"
         v-permission="{ action: 'create', effect: 'disabled' }"
+        type="primary"
         @click="addItem"
       >
         新增字典
       </a-button>
       <a-button
-        :disabled="isDisabled"
         v-permission="{ action: 'delete', effect: 'disabled' }"
+        :disabled="isDisabled"
         type="primary"
         @click="deleteItems"
       >
