@@ -39,7 +39,6 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 // ~@/assets/logo.png
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
-import { login } from '@/api/system/user'
 
 import { SvgIcon } from '@/components/svg-icon'
 

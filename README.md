@@ -41,6 +41,12 @@
 - [x] 资源管理
 - [x] 字典管理
 
+## 克隆主分支，忽略 git-pages 等无关分支
+
+```shell
+git clone --single-branch https://github.com/buqiyuan/vite-vue3-lowcode.git
+```
+
 ## Project setup
 
 ```

@@ -13,7 +13,7 @@
           <template #tab>
             <a-dropdown :trigger="['contextmenu']">
               <div style="display: inline-block">
-                {{ pageItem.meta.title }}
+                {{ pageItem.meta?.title }}
               </div>
               <template #overlay>
                 <a-menu style="user-select: none">

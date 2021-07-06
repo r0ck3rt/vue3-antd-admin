@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'Index',
+  name: 'Logo',
   props: {
     collapsed: {
       type: Boolean
@@ -19,12 +19,12 @@ export default {
 <style lang="scss" scoped>
 .logo {
   display: flex;
-  align-items: center;
-  padding-left: 24px;
   height: 64px;
-  line-height: 64px;
+  padding-left: 24px;
   overflow: hidden;
+  line-height: 64px;
   white-space: nowrap;
+  align-items: center;
 
   img {
     height: 32px;
@@ -32,8 +32,8 @@ export default {
   }
 
   .title {
-    color: white;
     margin-bottom: 0;
+    color: white;
   }
 }
 </style>

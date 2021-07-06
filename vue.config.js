@@ -21,7 +21,11 @@ module.exports = {
       less: {
         javascriptEnabled: true
       },
-      sass: { additionalData: `@import "@/styles/global.scss";` }
+      sass: {
+        additionalData: `
+        @use 'sass:math';
+        @import "@/styles/global.scss";`
+      }
     }
   },
   chainWebpack: (config) => {
