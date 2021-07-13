@@ -26,7 +26,7 @@
     >
       <!--        自定义渲染start-->
       <slot
-        v-if="$slots[slotItem.slots?.customRender]"
+        v-if="slotItem.slots?.customRender && $slots[slotItem.slots?.customRender]"
         :name="slotItem.slots?.customRender"
         v-bind="slotProps"
       ></slot>

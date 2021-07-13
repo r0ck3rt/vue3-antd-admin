@@ -44,7 +44,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const dynamicForm = ref<any>(null)
+    const dynamicForm = ref<InstanceType<typeof SchemaForm>>()
 
     const state = reactive({
       visible: true,
@@ -61,9 +61,9 @@ export default defineComponent({
     const onOk = () => {
       state.confirmLoading = true
       dynamicForm.value
-        .validate()
+        ?.validate()
         .then(async () => {
-          await (props.handleOk && props.handleOk(dynamicForm.value.modelRef, state)).finally(
+          await (props.handleOk && props.handleOk(dynamicForm.value?.modelRef, state)).finally(
             () => (state.confirmLoading = false)
           )
           state.visible = false

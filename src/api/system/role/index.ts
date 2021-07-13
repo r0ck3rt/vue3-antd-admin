@@ -31,7 +31,7 @@ export function getAdminRole(params) {
 
 /**
  * 删除角色
- * @param params
+ * @param {string} id
  */
 export function delAdminRole(id: string) {
   return http.request(

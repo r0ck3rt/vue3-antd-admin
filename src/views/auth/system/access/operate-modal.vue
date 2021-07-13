@@ -87,7 +87,7 @@ interface IState {
 }
 
 export default defineComponent({
-  name: 'AddModal',
+  name: 'OperateModal',
   components: {
     [Modal.name]: Modal,
     [Form.name]: Form,

@@ -16,8 +16,6 @@ export interface RequestOptions {
   isTransformRequestResult?: boolean
   // 是否显示提示信息
   isShowMessage?: boolean
-  // 是否解析成JSON
-  isParseToJson?: boolean
   // 成功的文本信息
   successMessageText?: string
   // 是否显示成功信息

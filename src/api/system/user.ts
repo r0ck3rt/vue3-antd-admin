@@ -1,6 +1,7 @@
 import http from '@/utils/http/axios'
 import { BasicResponseModel } from '@/api/BasicResponseModel'
 import { LoginParams, LoginResultModel } from './model/userModel'
+import { ContentTypeEnum } from '@/enums/httpEnum'
 
 enum Api {
   login = '/admin/login',
@@ -30,6 +31,9 @@ export function login(params: LoginParams) {
     {
       url: Api.login,
       method: 'POST',
+      headers: {
+        'Content-Type': ContentTypeEnum.JSON
+      },
       params
     },
     {

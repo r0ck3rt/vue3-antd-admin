@@ -114,7 +114,7 @@ const transform: AxiosTransform = {
 
   // 请求之前处理config
   beforeRequestHook: (config, options) => {
-    const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, isParseToJson } = options
+    const { apiUrl, joinParamsToUrl } = options
 
     config.url = isDev ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
 
@@ -144,11 +144,6 @@ const transform: AxiosTransform = {
         config.url = config.url + config.params
         config.params = {}
       }
-      // 'a[]=b&a[]=c'
-      if (!isParseToJson) {
-        config.params = qs.stringify(config.params, { arrayFormat: 'brackets' })
-        config.data = qs.stringify(config.data, { arrayFormat: 'brackets' })
-      }
     }
     return config
   },
@@ -162,6 +157,13 @@ const transform: AxiosTransform = {
     if (token) {
       // jwt token
       config.headers.token = token
+    }
+    if (config.method?.toLocaleUpperCase() !== RequestEnum.GET) {
+      // 对FORM_URLENCODED类型进行转换
+      if (config.headers?.['Content-Type'] == ContentTypeEnum.FORM_URLENCODED) {
+        // config.params = qs.stringify(config.params, { arrayFormat: 'brackets' })
+        config.data = qs.stringify(config.data, { arrayFormat: 'brackets' })
+      }
     }
     return config
   },

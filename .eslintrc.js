@@ -36,7 +36,6 @@ module.exports = {
     'vue/require-default-prop': 'off',
 
     'space-before-function-paren': 'off',
-    'no-unused-vars': 'off',
 
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/camelcase': 'off',

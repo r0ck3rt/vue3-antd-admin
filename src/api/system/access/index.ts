@@ -11,7 +11,7 @@ enum Api {
  * 获取模块列表
  * @param params
  */
-export function getAdminAccessModule(params?: object) {
+export function getAdminAccessModule(params = {}) {
   return http.request<ModuleItem[]>({
     url: Api.adminAccessModule,
     method: RequestEnum.GET,
