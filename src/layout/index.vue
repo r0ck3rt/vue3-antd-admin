@@ -1,6 +1,12 @@
 <template>
   <a-layout class="layout">
-    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible class="layout-sider">
+    <a-layout-sider
+      v-model:collapsed="collapsed"
+      :width="asiderWidth"
+      :trigger="null"
+      collapsible
+      class="layout-sider"
+    >
       <!--      网站logo start-->
       <logo :collapsed="collapsed" />
       <!--      网站logo end-->
@@ -25,8 +31,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, h, computed } from 'vue'
-import { Layout, message } from 'ant-design-vue'
+import { defineComponent, ref, computed } from 'vue'
+import { Layout } from 'ant-design-vue'
 import Logo from './logo/index.vue'
 import { TabsView } from './tabs'
 import AsideMenu from './menu/menu.vue'
@@ -47,16 +53,11 @@ export default defineComponent({
   },
   setup() {
     const collapsed = ref<boolean>(false)
-
-    const testMsg = () => {
-      message.success(h('span', '啥子'), 2)
-    }
-
-    const asiderWidth = computed(() => (collapsed.value ? '80px' : '256px'))
+    // 自定义侧边栏菜单收缩和展开时的宽度
+    const asiderWidth = computed(() => (collapsed.value ? 80 : 256))
 
     return {
       collapsed,
-      testMsg,
       asiderWidth
     }
   }

@@ -16,7 +16,7 @@ import { RequestOptions, Result } from './types'
 const isDev = process.env.NODE_ENV === 'development'
 import router from '@/router'
 import store from '@/store'
-import { storage } from '@/utils/Storage'
+import { Storage } from '@/utils/Storage'
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -98,7 +98,7 @@ const transform: AxiosTransform = {
               redirect: router.currentRoute.value.fullPath
             }
           })
-          storage.clear()
+          Storage.clear()
         }
       })
       return reject(new Error(timeoutMsg))

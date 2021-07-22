@@ -8,7 +8,7 @@ export interface PageOption {
   pageSizeOptions?: string[] // 指定每页可以显示多少条
   showSizeChanger?: boolean // 显示可改变每页数量
   showQuickJumper?: boolean // 是否显示跳转
-  showTotal: () => string
+  showTotal?: () => string
   onChange?: (current, pageSize) => void // 页码改变
   onShowSizeChange?: (current, pageSize) => void // pageSize变化
   pageChange?: (current, pageSize) => void // 页码或pageSize变化触发

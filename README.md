@@ -1,6 +1,6 @@
 # vue3-antd-admin
 
-基于 vue-cli / vite + vue3.0 + antd2.0 + ts4.0 的后台管理系统模板
+基于 vue-cli / vite2.x + vue3.x + antd-design-vue2.x + typescript4.x 的后台管理系统模板
 
 - 账号：admin，密码：123456
 - [在线预览](http://buqiyuan.gitee.io/vue3-antd-admin/)
@@ -9,8 +9,10 @@
 - [vue-cli 版](https://github.com/buqiyuan/vue3-antd-admin)
 - [vite 踩坑版](https://github.com/buqiyuan/vite-vue3-admin)
 - [gitee 地址](https://gitee.com/buqiyuan/vue3-antd-admin)
-  > 系统模块数据是从后端获取来的真实数据，路由也是从后端动态获取的，而后端是通过内网穿透提供访问的，难免会有访问失败的情况
-  > 所以如果进入页面时提示网络错误，则需要再次刷新页面请求接口
+
+## vscode 配置
+
+安装项目根目录.vscode 推荐的插件，再安装 Volar，并禁用 Vetur，重启 vscode 即可。
 
 > 使用了 Vue3.0 全家桶、ant-design-vue2.0 和 typescript4.0，实践 vue3.0 的新特性以及玩法，不得不说 vue3.0 的 Composition API 相比于 vue2.0 的 Options API
 > 灵活很多，让我们可以灵活地组合组件逻辑，我们可以很轻松的使用 hooks 的形式去代替以前 mixins 等的写法。更多 hooks 可以参考[vueuse](https://vueuse.org/functions.html)
@@ -41,15 +43,17 @@
 - [x] 资源管理
 - [x] 字典管理
 
-## 克隆主分支，忽略 git-pages 等无关分支
+## 克隆项目
 
-```shell
+```bash
 git clone --single-branch https://github.com/buqiyuan/vite-vue3-lowcode.git
+or
+git clone --depth=1 https://github.com/buqiyuan/vite-vue3-lowcode.git
 ```
 
 ## Project setup
 
-```
+```shell
 yarn install
 # 或
 yarn --frozen-lockfile
@@ -57,19 +61,19 @@ yarn --frozen-lockfile
 
 ### Compiles and hot-reloads for development
 
-```
+```shell
 yarn serve
 ```
 
 ### Compiles and minifies for production
 
-```
+```shell
 yarn build
 ```
 
 ### Lints and fixes files
 
-```
+```shell
 yarn lint
 ```
 
