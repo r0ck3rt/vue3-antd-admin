@@ -30,9 +30,9 @@ module.exports = {
   },
   chainWebpack: (config) => {
     // 移除 preload 插件
-    // config.plugins.delete('preload')
+    config.plugins.delete('preload')
     // 移除 prefetch 插件
-    // config.plugins.delete('prefetch')
+    config.plugins.delete('prefetch')
     config
       .plugin('ignore')
       .use(new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn$/))

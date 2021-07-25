@@ -54,7 +54,7 @@ export default defineComponent({
   setup() {
     const collapsed = ref<boolean>(false)
     // 自定义侧边栏菜单收缩和展开时的宽度
-    const asiderWidth = computed(() => (collapsed.value ? 80 : 256))
+    const asiderWidth = computed(() => (collapsed.value ? 80 : 208))
 
     return {
       collapsed,
