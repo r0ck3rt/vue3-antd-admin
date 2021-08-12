@@ -123,7 +123,8 @@
   },
   "[vue]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": false
+      "source.fixAll.eslint": false,
+      "source.fixAll.stylelint": true
     }
   },
   "i18n-ally.localesPaths": ["src/locales/lang"],

@@ -46,7 +46,7 @@ export default defineComponent({
   display: none;
   float: right;
 
-  > ::v-deep(span) {
+  > :deep(span) {
     margin-left: 5px;
 
     &:hover {

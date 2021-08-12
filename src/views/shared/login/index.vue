@@ -125,7 +125,7 @@ export default defineComponent({
     }
   }
 
-  ::v-deep(.ant-form) {
+  :deep(.ant-form) {
     width: 400px;
 
     .ant-col {

@@ -105,7 +105,6 @@ import { Card, Select, Table, Popconfirm } from 'ant-design-vue'
 import { TableProps } from 'ant-design-vue/lib/table/interface'
 import { usePagination, PageOption } from '@/hooks/usePagination'
 import { useDragRow, useDragCol } from './hooks'
-import { isFunction } from '@/utils/is'
 
 export default defineComponent({
   name: 'DynamicTable',
@@ -170,7 +169,7 @@ export default defineComponent({
      * @description 获取表格数据
      */
     const refreshTableData = async (params = {}, flush = false) => {
-      if (!isFunction(props.getListFunc)) return
+      if (!Object.prototype.toString.call(props.getListFunc).includes('Function')) return
       const queryParams = {
         pageNumber: flush ? 1 : pageOptions.value.current,
         pageSize: pageOptions.value.pageSize,
@@ -244,7 +243,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-::v-deep(.ant-table .ant-table-title) {
+:deep(.ant-table .ant-table-title) {
   display: flex;
 
   .ant-btn {
