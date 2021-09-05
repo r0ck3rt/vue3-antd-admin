@@ -4,6 +4,7 @@ import router, { routes } from '@/router/'
 import { notFound } from '@/router/staticModules/error'
 import common from '@/router/staticModules/'
 import { RouteRecordRaw } from 'vue-router'
+import { Empty } from 'ant-design-vue'
 import { toHump } from '@/utils/common'
 import { RouterTransition } from '@/components/transition'
 
@@ -25,17 +26,17 @@ const list2tree = (items, parentId = -1, arr = [], pathPrefix = '') => {
         path = [...new Set(path.split('/'))].join('/')
       }
 
+      const children = list2tree(items, item.id, [], path)
       // 路由对应的组件
-      const component =
-        parentId === -1
-          ? RouterTransition
-          : constantRouterComponents[viewPath] || (() => import('@/views/shared/error/404.vue'))
+      const component = children.length
+        ? RouterTransition
+        : constantRouterComponents[viewPath] || Empty
 
       return {
         path: path,
         // 路由名称，建议唯一
-        name: viewPath ? toHump(viewPath) : path,
-        children: list2tree(items, item.id, [], path),
+        name: `${viewPath ? toHump(viewPath) : path}-${item.id}`,
+        children: children,
         // 该路由对应页面的 组件 (动态加载)
         component: component,
         props: true,
