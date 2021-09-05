@@ -1,7 +1,5 @@
 module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset'
-  ],
+  presets: ['@vue/cli-plugin-babel/preset'],
   plugins: [
     'lodash',
     [
@@ -9,9 +7,9 @@ module.exports = {
       {
         libraryName: 'ant-design-vue',
         libraryDirectory: 'es',
-        style: true,
+        style: true
       },
-      'ant-design-vue',
-    ],
-  ],
+      'ant-design-vue'
+    ]
+  ]
 }

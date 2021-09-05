@@ -15,7 +15,7 @@ export interface PageOption {
   [key: string]: any
 }
 
-export function usePagination(pageOption?: PageOption) {
+export function usePagination(pageOption: PageOption = {}) {
   // 分页配置参数
   const pageOptions = ref({
     current: 1,

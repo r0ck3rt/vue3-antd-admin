@@ -31,3 +31,5 @@ export const errorRoutes = {
     }
   ]
 }
+
+export default [notFound, errorRoutes]

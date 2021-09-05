@@ -7,13 +7,12 @@ import qs from 'qs'
 import { checkStatus } from './checkStatus'
 import { Modal, message as Message } from 'ant-design-vue'
 import { RequestEnum, ResultEnum, ContentTypeEnum } from '@/enums/httpEnum'
-
+import { IS_DEV } from '@/utils/common'
 import { isString } from '@/utils/is/index'
 import { setObjToUrlParams } from '@/utils/urlUtils'
 
 import { RequestOptions, Result } from './types'
 
-const isDev = process.env.NODE_ENV === 'development'
 import router from '@/router'
 import store from '@/store'
 import { Storage } from '@/utils/Storage'
@@ -116,7 +115,7 @@ const transform: AxiosTransform = {
   beforeRequestHook: (config, options) => {
     const { apiUrl, joinParamsToUrl } = options
 
-    config.url = isDev ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
+    config.url = IS_DEV ? `/api${config.url}` : `${apiUrl || ''}${config.url}`
 
     if (config.method === RequestEnum.GET) {
       const now = new Date().getTime()
@@ -188,7 +187,7 @@ const transform: AxiosTransform = {
         })
         return
       }
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(error)
     }
     // 请求是否被取消

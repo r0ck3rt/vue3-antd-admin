@@ -11,6 +11,7 @@ const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
 const IS_DEV = ['development'].includes(process.env.NODE_ENV)
 
 module.exports = {
+  // lintOnSave: false, //关闭eslint检查
   // publicPath: isDev ? '' : querystring.unescape('<%=request.getContextPath()%>'),
   publicPath: process.env.BASE_URL,
   // filenameHashing: false,
@@ -145,7 +146,7 @@ module.exports = {
         target: process.env.VUE_APP_API_URL,
         // target: 'http://localhost:8888',
         changeOrigin: true,
-        // logLevel: 'debug',
+        logLevel: 'debug',
         pathRewrite: {
           '^/api': ''
         }

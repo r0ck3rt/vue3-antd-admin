@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, createVNode } from 'vue'
+import { defineComponent, reactive, toRefs, computed, createVNode } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import components from '@/layout/header/components'
 import { message, Modal } from 'ant-design-vue'
@@ -74,14 +74,13 @@ export default defineComponent({
     const store = useStore()
 
     const state = reactive({
-      username: store.getters['user/userInfo']?.username,
       fullscreenIcon: 'FullscreenOutlined'
     })
 
     const router = useRouter()
     const route = useRoute()
-    console.log(route.matched)
-    console.log(router.getRoutes(), 'currentRoute')
+
+    const username = computed(() => store.getters['user/userInfo']?.username)
 
     // 退出登录
     const doLogout = () => {
@@ -156,6 +155,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       iconList,
+      username,
       toggleFullScreen,
       doLogout
     }

@@ -50,6 +50,19 @@ const routes: Array<RouteRecordRaw> = [
           import(/* webpackChunkName: "demos-button" */ '@/views/shared/demos/form/rule-form.vue')
       },
       {
+        path: 'summary-table',
+        name: `${routeName}-summary-table`,
+        meta: {
+          title: '合计表格',
+          icon: 'icon-zhuomian',
+          keepAlive: true
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "summary-table" */ '@/views/shared/demos/tables/summary-table/index.vue'
+          )
+      },
+      {
         path: 'icons',
         name: `${routeName}-icons`,
         meta: {

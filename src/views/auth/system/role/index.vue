@@ -75,7 +75,6 @@ export default defineComponent({
         formSchema: getFormSchema(),
         handleOk: async (modelRef, state) => {
           const { description, title, accessIdsList } = modelRef
-
           const params = {
             description,
             title,

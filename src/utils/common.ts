@@ -146,3 +146,29 @@ const encryption = (plaintext: string) =>
  */
 const decryption = (ciphertext: string) =>
   isBase64(ciphertext) ? window.decodeURIComponent(window.atob(ciphertext)) : ciphertext
+
+/**
+ *
+ * @param {string} viewPath 页面的路径 `@/view/${viewPath}`
+ * @param {string} viewFileName  页面文件 默认 index.vue
+ */
+export const getAsyncPage = (viewPath: string, viewFileName = 'index') => {
+  if (viewPath.endsWith('.vue')) {
+    return () => import(/* webpackChunkName: "[request]" */ `@/views/${viewPath}`)
+  } else {
+    return () =>
+      import(/* webpackChunkName: "[request]" */ `@/views/${viewPath}/${viewFileName}.vue`)
+  }
+}
+
+/**
+ * / _ - 转换成驼峰并将view替换成空字符串
+ * @param {*} name name
+ */
+export const toHump = (name) => {
+  return name
+    .replace(/[\-\/\_](\w)/g, (all, letter) => {
+      return letter.toUpperCase()
+    })
+    .replace('views', '')
+}

@@ -21,7 +21,8 @@ const buttonTypes = ['default', 'primary', 'ghost', 'dashed', 'link']
 
 export default defineComponent({
   name: 'AButton',
-  components: { 'antd-button': Button }, // 换个名称，避免成死递归组件
+  components: { 'antd-button': Button },
+  inheritAttrs: false, // 换个名称，避免成死递归组件
   props: {
     type: {
       type: String as PropType<ButtonType | 'danger' | 'warning' | 'success'>,
