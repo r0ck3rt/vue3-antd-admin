@@ -201,7 +201,6 @@ export default defineComponent({
       state.confirmLoading = true
       try {
         await formRef.value.validate()
-        console.log(modelRef)
         const id = props.fields.id
         const params = { ...modelRef }
         params.viewPath ??= ''
