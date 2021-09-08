@@ -1,10 +1,8 @@
 <template>
   <config-provider :locale="zhCN">
-    <SuspenseWithError>
-      <router-view v-slot="{ Component }">
-        <component :is="Component" />
-      </router-view>
-    </SuspenseWithError>
+    <router-view v-slot="{ Component }">
+      <component :is="Component" />
+    </router-view>
     <transition name="slide-up">
       <lock-screen v-if="isLock && $route.name != 'login'" />
     </transition>
@@ -15,14 +13,14 @@
 import { defineComponent, computed, onMounted, onUnmounted } from 'vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import { ConfigProvider } from 'ant-design-vue'
-import SuspenseWithError from '@/components/SuspenseWithError.vue'
+// import SuspenseWithError from '@/components/SuspenseWithError.vue'
 import { LockScreen } from '@/components/lockscreen'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'App',
-  components: { ConfigProvider, LockScreen, SuspenseWithError },
+  components: { ConfigProvider, LockScreen },
   setup() {
     const route = useRoute()
     const store = useStore()

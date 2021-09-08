@@ -69,12 +69,12 @@ export const columns: TableColumn[] = [
         props: {
           type: 'danger' // 按钮类型
         },
-        func: async ({ record }, refreshTableData) => {
+        func: ({ record }, refreshTableData) => {
           // 点击删除的回调
           if (record.id < 6) {
             return message.warn('系统预置菜单，不能删除！')
           }
-          return await delAdminAccess(record.id).then(() => refreshTableData())
+          return delAdminAccess(record.id).then(() => refreshTableData())
         }
       },
       {

@@ -5,6 +5,7 @@
     mode="inline"
     theme="dark"
     :inline-collapsed="collapsed"
+    class="menu-container"
     @click="clickMenuItem"
   >
     <template v-for="item in menus" :key="item.name">
@@ -15,16 +16,6 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed, watch, toRefs } from 'vue'
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
-  MailOutlined,
-  DesktopOutlined,
-  InboxOutlined,
-  AppstoreOutlined
-} from '@ant-design/icons-vue'
-import { Menu } from 'ant-design-vue'
 import MenuItem from './menu-item.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from '@/store'
@@ -33,16 +24,7 @@ import { routes } from '@/router'
 export default defineComponent({
   name: 'Menu',
   components: {
-    MenuItem,
-    'a-sub-menu': Menu.SubMenu,
-    'a-menu-item': Menu.Item,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    PieChartOutlined,
-    MailOutlined,
-    DesktopOutlined,
-    InboxOutlined,
-    AppstoreOutlined
+    MenuItem
   },
   props: {
     collapsed: {
@@ -105,3 +87,15 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.menu-container {
+  height: calc(100vh - 64px);
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+</style>

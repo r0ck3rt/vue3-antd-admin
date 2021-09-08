@@ -254,11 +254,15 @@ export default defineComponent({
 
     // 操作事件
     const actionEvent = async (record, func, actionType = '') => {
-      // 将refreshTableData放入宏任务中,等待当前微任务拿到结果进行判断操作，再请求表格数据
-      await func({ record, props }, () => setTimeout(() => refreshTableData()))
-      // 如果为删除操作,并且删除成功，当前的表格数据条数小于2条,则当前页数减一,即请求前一页
-      if (actionType == 'del' && state.tableData.length < 2) {
-        pageOptions.value.current = Math.max(1, pageOptions.value.current - 1)
+      try {
+        // 将refreshTableData放入宏任务中,等待当前微任务拿到结果进行判断操作，再请求表格数据
+        await func({ record, props }, () => setTimeout(refreshTableData))
+        // 如果为删除操作,并且删除成功，当前的表格数据条数小于2条,则当前页数减一,即请求前一页
+        if (actionType == 'del' && state.tableData.length < 2) {
+          pageOptions.value.current = Math.max(1, pageOptions.value.current - 1)
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
 

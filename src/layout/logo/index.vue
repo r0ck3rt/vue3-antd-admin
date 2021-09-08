@@ -5,15 +5,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Logo',
-  props: {
-    collapsed: {
-      type: Boolean
-    }
+<script setup>
+import { defineProps } from 'vue'
+defineProps({
+  collapsed: {
+    type: Boolean
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
